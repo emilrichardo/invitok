@@ -1,6 +1,9 @@
 <script setup>
 
 import "./styles/main.css"
+import { useUserStore } from "./store/user";
+
+const userStore = useUserStore()
 
 
 </script>
@@ -10,6 +13,7 @@ import "./styles/main.css"
  <RouterLink to="/">Inicio</RouterLink>
   <RouterLink to="/login">Login</RouterLink>
   <RouterLink to="/register">Register</RouterLink>
+  <button @click="userStore.logoutUser">Logout</button>
 
   <RouterView></RouterView>
 
