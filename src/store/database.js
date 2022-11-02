@@ -1,23 +1,33 @@
 import {defineStore} from "pinia"
-import { collection, query, getDocs } from "firebase/firestore";
-import { db } from "../firebaseConfig";
+import { collection, query, getDocs, where } from "firebase/firestore";
+import { auth, db } from "../firebaseConfig";
+
+
 export const useDatabaseStore = defineStore("database",{
     state:()=>({
-        documents:[]
+        documents:[],
+        loadingDoc: false
     }),
     actions:{
         async getUrls(){
+            if(this.documents.length !== 0){
+                return;
+            }
+            this.loadingDoc = true
             try {
-                const q = query(collection(db, "urls"))
+                const q = query(collection(db, "urls"), where("user", "==", auth.currentUser.uid ))
                 const querySnapshot = await getDocs(q)
                 querySnapshot.forEach(doc =>{
-                    console.log(doc.id, doc.data());
+                    this.documents.push({
+                        id: doc.id,
+                        ...doc.data()
+                    })
                 })
 
             } catch (error) {
                 console.log(error);
             } finally{
-
+                this.loadingDoc = false
             }
         }
     }
