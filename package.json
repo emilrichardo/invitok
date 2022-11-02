@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy": "firebase deploy --only hosting",
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
