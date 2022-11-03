@@ -26,7 +26,7 @@ export const useUserStore = defineStore("userStore",{
             this.loadingUser = true
             try {
                 const {user} = await signInWithEmailAndPassword(auth, email, password)
-                router.push("/")
+                router.push("/dashboard")
             } catch (error) {
                 console.log(error);
             } finally{

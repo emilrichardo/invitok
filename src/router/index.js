@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory  } from "vue-router";
 import Home from "./../views/Home.vue"
-import Register from "./../views/RegisterView.vue"
-import Login  from "../views/LoginView.vue"
+import Register from "./../views/Register.vue"
+import Login  from "../views/Login.vue"
+import Dashboard from "../views/Dashboard.vue"
 import Editar from "../views/Editar.vue"
 import { useUserStore } from "../store/user";
 
@@ -24,16 +25,21 @@ const router = createRouter({
             path: "/",
             name: "home",
             component: Home,
+        },
+        {
+            path: "/dashboard",
+            name: "dashboard",
+            component: Dashboard,
             beforeEnter: requireAuth
         },
         {
-            path: "/editar/:id",
+            path: "/invitation/:id",
             name: "editar",
             component: Editar,
             beforeEnter: requireAuth
         },
         {
-            path: "/Login",
+            path: "/login",
             name: "Login",
             component: Login
         },
