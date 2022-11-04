@@ -4,7 +4,10 @@
         <input type="email" placeholder="ingrese su email" v-model.trim="email" />
         <input type="password" placeholder="ingrese su contraseña" v-model.trim="password" />
         <button :disabled="useUserStore.loadingUser">Login</button>
+
     </form>
+
+    <button @click="signInWithGoogle" >SignIn Google</button>
 
 </template>
 
@@ -30,5 +33,11 @@ const handleSubmit = async ()=>{
 
 
 }
+
+const signInWithGoogle = async ()=>{
+    await userStore.handleSignInGoogle()
+}
+
+
 
 </script>

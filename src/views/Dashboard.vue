@@ -1,6 +1,6 @@
 <template>
     <div>
-      {{url}}
+      {{userStore.userData}}
       <form @submit.prevent="handleSubmit">
         <input type="text" placeholder="Ingresar url" v-model="url"/>
         <button type="submit" :disabled="databaseStore.savingDoc">enviar</button>
@@ -38,5 +38,7 @@ const router = useRouter()
   const handleSubmit = ()=>{
      databaseStore.addUrl(url.value)
   }
+
+
 
   </script>
