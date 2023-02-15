@@ -1,0 +1,1 @@
+import {invitationObj, categoryObj} from "@/functions/classes.js"

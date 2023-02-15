@@ -7,20 +7,19 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'primary': '#B77B44',
+      'primary': '#0c2bd6',
       'primary-light': '#E8C892',
       'secondary': '#C3C3A7',
-      'light': '#FCFBFA',
+      'light': '#d0e0ed',
       'white': '#fff',
-      'dark': '#2D1F13',
+      'dark': '#000',
     },
 
     extend: {
 
       fontFamily: {
         'sans':  'Fira Sans ,sans-serif ' ,
-        'serif':  'EB Garamond , serif ' ,
-        'mono':  'Space Mono , monospace ' ,
+
       },
 
     },

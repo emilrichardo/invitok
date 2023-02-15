@@ -1,6 +1,10 @@
 <template>
     <div>
-      {{userStore.userData}}
+      {{userStore.userData.email}}
+      {{userStore.userData.displayName}}
+
+
+
       <form @submit.prevent="handleSubmit">
         <input type="text" placeholder="Ingresar url" v-model="url"/>
         <button type="submit" :disabled="databaseStore.savingDoc">enviar</button>
@@ -9,9 +13,9 @@
     <div v-if="databaseStore.loadingDoc">Loading</div>
     <ul v-else>
       <li v-for="item of databaseStore.documents" :key="item.id">
-        {{item.name}}
-        {{item.short}} <br/>
-        {{item.id}}
+        <h2>{{item.name}}</h2>
+
+
         <button   @click="databaseStore.deleteUrl(item.id)">Eliminar</button>
         <button @click="router.push(`/invitation/${item.id}`)">Editar</button>
       </li>

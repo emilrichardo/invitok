@@ -99,5 +99,12 @@ export const useUserStore = defineStore("userStore",{
             }
 
         },
+        async handleSignInFacebook(){
+            try {
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
     }
 })

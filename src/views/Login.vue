@@ -12,6 +12,7 @@
 </template>
 
 <script setup>
+
 import { ref } from 'vue';
 import { useUserStore } from '../store/user';
 
@@ -20,8 +21,8 @@ import { useUserStore } from '../store/user';
 const userStore = useUserStore()
 
 
-const email = ref("emilrichardo@gmail.com")
-const password = ref("Nocheros1986")
+const email = ref("")
+const password = ref("")
 
 
 const handleSubmit = async ()=>{

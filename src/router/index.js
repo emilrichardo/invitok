@@ -4,12 +4,18 @@ import Register from "./../views/Register.vue"
 import Login  from "../views/Login.vue"
 import Dashboard from "../views/Dashboard.vue"
 import Editar from "../views/Editar.vue"
+import invitations from "../views/invitations/index.vue"
+import single from "../views/invitations/SingleProject.vue"
+import AdminView from "../views/admin/LoadDesign.vue"
+import DesignsView from "../views/admin/Designs.vue"
+
 import { useUserStore } from "../store/user";
 
 const requireAuth = async(to,from,next)=>{
     const userStore = useUserStore()
     userStore.loadingSession = true
     const user = await userStore.currentUser()
+
     if(user){
         next()
     }else{
@@ -17,6 +23,8 @@ const requireAuth = async(to,from,next)=>{
     }
     userStore.loadingSession = false
 }
+
+
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,10 +41,33 @@ const router = createRouter({
             beforeEnter: requireAuth
         },
         {
-            path: "/invitation/:id",
-            name: "editar",
-            component: Editar,
+            path: "/designs",
+            name: "designs",
+            component: AdminView,
             beforeEnter: requireAuth
+        },
+        {
+            path: "/invitations",
+            name: "invitations",
+            component: invitations,
+            beforeEnter: requireAuth
+        },
+        {
+            path: "/designs/:design",
+            name: "designs",
+            component: DesignsView,
+            beforeEnter: requireAuth
+        },
+
+        {
+            path: "/:category",
+            name: "invitations",
+            component: invitations,
+        },
+        {
+            path: "/:category/:design",
+            name: "design",
+            component: single,
         },
         {
             path: "/login",

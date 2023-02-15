@@ -2,6 +2,7 @@
 
 import "./styles/main.css"
 import { useUserStore } from "./store/user";
+import { RouterLink } from "vue-router";
 
 const userStore = useUserStore()
 
@@ -9,17 +10,20 @@ const userStore = useUserStore()
 </script>
 
 <template>
+  <header>
+    <nav class="flex flex-col">
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/register">Register</RouterLink>
+        <RouterLink to="/login">Login</RouterLink>
+        <RouterLink to="/dashboard">dasboard</RouterLink>
+        <RouterLink to="/designs">Upload Desgin</RouterLink>
+    </nav>
+</header>
 
-  <nav v-if="!userStore.loadingSession" >
-    <RouterLink to="/"  >Inicio</RouterLink>
-    <RouterLink to="/dashboard"  v-if="userStore.userData" >Dashboard</RouterLink>
-    <RouterLink to="/login" v-if="!userStore.userData" >Login</RouterLink>
-    <RouterLink to="/register" v-if="!userStore.userData" >Register</RouterLink>
-    <button @click="userStore.logoutUser" v-if="userStore.userData">Logout</button>
-  </nav>
 
 
-  <RouterView></RouterView>
+
+  <RouterView :key="$route.path"></RouterView>
 
 
 
