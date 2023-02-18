@@ -1,5 +1,6 @@
 <template>
-    design
+
+   <h1>Template design</h1>
 
     {{ params }}
 </template>

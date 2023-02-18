@@ -45,6 +45,7 @@ const router = createRouter({
             name: "designs",
             component: AdminView,
             beforeEnter: requireAuth
+
         },
         {
             path: "/invitations",
@@ -52,23 +53,10 @@ const router = createRouter({
             component: invitations,
             beforeEnter: requireAuth
         },
-        {
-            path: "/designs/:design",
-            name: "designs",
-            component: DesignsView,
-            beforeEnter: requireAuth
-        },
 
-        {
-            path: "/:category",
-            name: "invitations",
-            component: invitations,
-        },
-        {
-            path: "/:category/:design",
-            name: "design",
-            component: single,
-        },
+
+
+
         {
             path: "/login",
             name: "Login",

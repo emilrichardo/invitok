@@ -24,7 +24,6 @@ export const useDesignsStore = defineStore("database",{
                         id: doc.id,
                         ...doc.data()
                     })
-                    console.log(doc.id);
 
                 })
 

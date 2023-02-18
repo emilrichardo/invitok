@@ -27,7 +27,6 @@
             {{ design.category }} <br>
             {{ design.detail}} <br>
             <button   @click="designs.deleteDesign(design.id)">Eliminar</button>
-            <button @click="router.push(`/invitation/${design.id}`)">Editar</button>
             <button @click="router.push({ name: 'designs', params: { design: design.id  } })">Editar</button>
         </li>
 
@@ -43,7 +42,7 @@ import { ref, computed, onMounted, watchEffect  } from 'vue';
 import {useDesignsStore} from "../../store/designs"
 
 import { useRouter } from 'vue-router';
-
+import { nanoid } from 'nanoid'
 
 import slugify from "../../functions/stringToSlug"
 
@@ -66,6 +65,12 @@ const slug = computed(()=>{
 })
 
 
+const designId = computed(()=>{
+    const id = selected.value.charAt(0) + "" + slug.value.charAt(0)   + "-" +  nanoid(3)
+    return id
+})
+
+
 
  const handleSubmit = ()=>{
 
@@ -73,11 +78,14 @@ const slug = computed(()=>{
     const invitation =  {
         name: name.value,
         category:selected.value,
-        path: slug.value,
-        detail: detail.value
-
+        slug: slug.value,
+        path: "/" + slug.value,
+        detail: detail.value,
+        design_id: designId.value
     }
     designs.addDesign(invitation)
+
+
 
 
  }
